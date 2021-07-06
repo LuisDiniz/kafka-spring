@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafka-sample
+spec:
+  template:
+    metadata:
+      name: kafka-sample-pod
+    spec:
+      containers:
+        - name: kafka-sample
+          image: kafka-sample
+          imagePullPolicy: Never
+          env:
+          - name: KAFKA_SERVER
+            value: "kafka.kafka-ca1:9092"      
+      restartPolicy: Never
